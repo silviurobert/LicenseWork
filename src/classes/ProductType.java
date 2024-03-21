@@ -13,6 +13,6 @@ public enum ProductType {
     }
 
     public double getPrice() {
-        return price;
+        return this.price;
     }
 }

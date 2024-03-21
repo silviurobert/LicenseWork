@@ -23,4 +23,9 @@ public class Product {
     public void displayProduct(){
         System.out.println("Product details: " + getType() + ", price: " + this.type.getPrice());
     }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

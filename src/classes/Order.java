@@ -51,6 +51,11 @@ public class Order implements Discountable{
     }
 
     @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         if(this.noProducts < 20) {
