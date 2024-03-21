@@ -1,9 +1,15 @@
 package classes;
 
-import java.util.SplittableRandom;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 //ticket
-public class Order implements Discountable{
+public class Order implements Discountable, Customizable, Inventory{
+    private static List<Order> orderList = new ArrayList<>();
+
+    private static Map<ProductType, Integer> productInventory = Util.getProductInventory();
+
     private static int nextOrderId = 1;
     private int orderId;
     private Customer customer;
@@ -21,8 +27,13 @@ public class Order implements Discountable{
         this.product = new Product(product.getType());
         this.noProducts = noProducts;
         calculateOrderPrice();
+        orderList.add(this);
+        checkAvailability(product.getType(), this);
     }
 
+    public static List<Order> getOrderList() {
+        return orderList;
+    }
     public int getOrderId() {
         return this.orderId;
     }
@@ -39,9 +50,6 @@ public class Order implements Discountable{
     public void applyDiscount(double orderPrice, int noProducts) {
         if(this.noProducts > 20){
             this.orderPrice = this.orderPrice * 0.9;
-        }
-        else{
-            this.orderPrice = this.product.getType().getPrice() * this.noProducts;
         }
     }
 
@@ -75,8 +83,29 @@ public class Order implements Discountable{
                     .append(this.orderPrice = this.orderPrice * 0.9);
 
         }
-
         return stringBuilder.toString();
+
+    }
+
+    @Override
+    public void customizeOrder() {
+
+    }
+
+    @Override
+    public void checkAvailability(ProductType productType, Order order) {
+        Map<ProductType, Integer> productInventory = Util.getProductInventory();
+        int availableQuantity = Util.getProductInventory().get(productType);
+        if (availableQuantity >= order.getNoProducts()) {
+            System.out.println("Enough stock available");
+        } else {
+            System.out.println("Insufficient stock available");
+
+        }
+    }
+
+    @Override
+    public void updateInventory(Product product, int quantity) {
 
     }
 }

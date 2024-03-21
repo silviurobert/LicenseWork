@@ -2,9 +2,9 @@ package classes;
 
 public enum ProductType {
     Catalogue(20.0),
-    Book(80.0),
-    NewsPaper(15.0),
-    BusinessCard(20.0);
+    Book(60.0),
+    NewsPaper(10.0),
+    BusinessCard(5.0);
 
     private final double price;
 
