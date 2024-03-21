@@ -24,50 +24,50 @@ public class Order implements Discountable{
     }
 
     public int getOrderId() {
-        return orderId;
+        return this.orderId;
     }
 
     public int getNoProducts() {
-        return noProducts;
+        return this.noProducts;
     }
 
     public double getOrderPrice() {
-        return orderPrice;
+        return this.orderPrice;
     }
 
     @Override
     public void applyDiscount(double orderPrice, int noProducts) {
         if(this.noProducts > 20){
-            this.orderPrice = orderPrice * 0.9;
+            this.orderPrice = this.orderPrice * 0.9;
         }
         else{
-            this.orderPrice = product.getType().getPrice() * noProducts;
+            this.orderPrice = this.product.getType().getPrice() * this.noProducts;
         }
     }
 
     public void calculateOrderPrice() {
-        orderPrice = product.getType().getPrice() * noProducts;
-        applyDiscount(orderPrice, noProducts);
+        this.orderPrice = this.product.getType().getPrice() * this.noProducts;
+        applyDiscount(this.orderPrice, this.noProducts);
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        if(noProducts < 20) {
-            stringBuilder.append("Order ID: ").append(orderId).append("\n").append("Customer: ").append(customer.getName())
-                    .append(", ").append(customer.getCity()).append("\n").append("Product: ").append(product.getType())
-                    .append(", price: ").append(product.getType().getPrice())
-                    .append(", Number of Products: ").append(noProducts).append(", Order Price: ")
-                    .append(orderPrice);
+        if(this.noProducts < 20) {
+            stringBuilder.append("Order ID: ").append(this.orderId).append("\n").append("Customer: ").append(this.customer.getName())
+                    .append(", ").append(this.customer.getCity()).append("\n").append("Product: ").append(this.product.getType())
+                    .append(", price: ").append(this.product.getType().getPrice()).append("\n")
+                    .append("Number of Products: ").append(this.noProducts).append(", Order Price: ")
+                    .append(this.orderPrice);
         }
         else{
-            stringBuilder.append("Order ID: ").append(orderId).append("\n").append("Customer: ").append(customer.getName())
-                    .append(", ").append(customer.getCity()).append("\n").append("Product: ").append(product.getType())
-                    .append(", price: ").append(product.getType().getPrice())
-                    .append(", Number of Products: ").append(noProducts).append(", 10% discount added, ")
-                    .append("Old price: ").append(this.orderPrice = product.getType().getPrice() * noProducts)
+            stringBuilder.append("Order ID: ").append(this.orderId).append("\n").append("Customer: ").append(this.customer.getName())
+                    .append(", ").append(this.customer.getCity()).append("\n").append("Product: ").append(product.getType())
+                    .append(", price: ").append(this.product.getType().getPrice()).append("\n")
+                    .append("Number of Products: ").append(this.noProducts).append(", 10% discount applied\n")
+                    .append("Old price: ").append(this.orderPrice = this.product.getType().getPrice() * this.noProducts)
                     .append(", New price: ")
-                    .append(this.orderPrice = orderPrice * 0.9);
+                    .append(this.orderPrice = this.orderPrice * 0.9);
 
         }
 

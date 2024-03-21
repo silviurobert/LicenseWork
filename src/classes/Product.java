@@ -6,16 +6,21 @@ public class Product {
 
     public Product(){
     }
+
+
     public Product(ProductType type) {
         this.type = type;
-        this.price = price;
     }
 
     public ProductType getType() {
-        return type;
+        return this.type;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public void displayProduct(){
-        System.out.println("Product details: " + getType() + ", price: " + type.getPrice());
+        System.out.println("Product details: " + getType() + ", price: " + this.type.getPrice());
     }
 }

@@ -10,10 +10,10 @@ public class Customer {
         this.city = city;
     }
     public String getName() {
-        return name;
+        return this.name;
     }
     public String getCity() {
-        return city;
+        return this.city;
     }
     public void displayCustomer(){
         System.out.println("Customer details: " + getName() + ", " + getCity());
