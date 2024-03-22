@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-//ticket
-public class Order implements Discountable, Customizable, Inventory{
+public class Order implements Discountable, Customizable{
     private static List<Order> orderList = new ArrayList<>();
-
     private static Map<ProductType, Integer> productInventory = Util.getProductInventory();
-
     private static int nextOrderId = 1;
     private int orderId;
     private Customer customer;
@@ -28,11 +25,14 @@ public class Order implements Discountable, Customizable, Inventory{
         this.noProducts = noProducts;
         calculateOrderPrice();
         orderList.add(this);
-        checkAvailability(product.getType(), this);
     }
 
     public static List<Order> getOrderList() {
         return orderList;
+    }
+
+    public Product getProduct(){
+        return this.product;
     }
     public int getOrderId() {
         return this.orderId;
@@ -92,20 +92,19 @@ public class Order implements Discountable, Customizable, Inventory{
 
     }
 
-    @Override
+    /*@Override
     public void checkAvailability(ProductType productType, Order order) {
         Map<ProductType, Integer> productInventory = Util.getProductInventory();
         int availableQuantity = Util.getProductInventory().get(productType);
+
         if (availableQuantity >= order.getNoProducts()) {
             System.out.println("Enough stock available");
         } else {
             System.out.println("Insufficient stock available");
-
         }
-    }
+    }*/
 
-    @Override
-    public void updateInventory(Product product, int quantity) {
 
-    }
+
+
 }

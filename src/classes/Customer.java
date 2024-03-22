@@ -15,9 +15,7 @@ public class Customer {
     public String getCity() {
         return this.city;
     }
-    public void displayCustomer(){
-        System.out.println("Customer details: " + getName() + ", " + getCity());
-    }
+
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
