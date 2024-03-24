@@ -1,5 +1,5 @@
 package classes;
-//event
+
 public class Customer {
     private String name;
     private String city;
@@ -16,9 +16,8 @@ public class Customer {
         return this.city;
     }
 
-
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 }

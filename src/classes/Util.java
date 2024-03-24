@@ -26,7 +26,7 @@ public class Util {
     }
 
     public static void updateInventory(Order order) {
-        ProductType productType = order.getProduct().getType();
+        ProductType productType = order.getProduct().type();
         int currentQuantity = productInventory.getOrDefault(productType, 0);
         int orderedQuantity = order.getNoProducts();
         productInventory.put(productType, currentQuantity - orderedQuantity);
@@ -51,7 +51,7 @@ public class Util {
             System.out.println("Not enough stock available for product: " + productType);
             int remainingQuantity = availableQuantity;
             for (Order existingOrder : orderList) {
-                if (existingOrder.getProduct().getType() == productType) {
+                if (existingOrder.getProduct().type() == productType) {
                     remainingQuantity -= existingOrder.getNoProducts();
                 }
             }
